@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  model_products:
+    build: ./detecter_model      
+    container_name: model_products
+    ports:
+      - "5001:5000"
+    networks:
+      - app_network
+
+  model_receipts:
+    build: ./easyocr             
+    container_name: model_receipts
+    ports:
+      - "5002:5000"
+    networks:
+      - app_network
+
+  tg_bot:
+    build: ./tg_bot
+    container_name: tg_bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    depends_on:
+      - model_products
+      - model_receipts
+    networks:
+      - app_network
+
+networks:
+  app_network:

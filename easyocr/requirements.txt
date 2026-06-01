@@ -1,7 +1,7 @@
-fastapi
-uvicorn
-python-multipart
-easyocr
-opencv-python
-torch
-torchvision
+fastapi==0.136.1
+uvicorn==0.47.0
+python-multipart==0.0.30
+easyocr==1.7.2
+opencv-python==4.13.0.92
+torch==2.12.0
+torchvision==0.27.0
